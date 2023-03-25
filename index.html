@@ -1,90 +1,57 @@
 <!DOCTYPE html>
 <html lang="en" class="h-full">
+
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./dist/styles.css" />
-<!--    <script src="./src/js/main.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/animejs"></script>
+    <script src="./node_modules/animejs/lib/anime.min.js"></script>
+    <!--    <script src="./src/js/main.js"></script>-->
     <title>Document</title>
   </head>
-  <body
-    class="antialiased sm:w-full sm:h-full h-full bg-slate-900 flex flex-col justify-center items-center"
-  >
-    <div class="sm:w-full md:w-9/12 text-center p-5 mt-24 flex-grow">
-      <h1 class="text-white font-mono text-5xl mb-8 p-5">Bonjour</h1>
-      <div class="w-full flex justify-evenly items-center">
-        <h4 class="text-white font-mono text-lg">
-          je suis Abigaele ton assistante media et tu es ?
-        </h4>
-        <form action="">
-          <input
-            class="text-black placeholder:pl-2 h-10 rounded-md mr-5 font-mono"
-            type="text"
-            name="name"
-            id="name"
-            placeholder="ton nom"
-            required
-          />
-          <input
-                  id="butt_1_name"
-            type="button"
-            value="c'est mon nom"
-            class="text-white bg-slate-700 h-10 rounded-md px-5 hover:bg-slate-800 font-mono"
-          />
+
+  <body class="antialiased sm:w-full  bg-slate-900 flex flex-col justify-center items-center">
+    <div
+      class="sm:w-full max-sm:w-full md:w-9/12 max-md:w-11/12 max-lg:w-11/12 lg:w-10/12 text-center p-5 mt-24 flex-grow">
+      <h1 class="text-white font-mono text-5xl mb-8 p-5 mx-auto">Bonjour</h1>
+      <div class="w-full flex">
+        <form action="#"
+          class="sm:w-full max-sm:w-full lg:w-10/12 max-lg:w-11/12 mx-auto flex max-sm:flex-col max-sm:justify-evenly sm:flex-col md:flex-col lg:flex-row sm:justify-evenly lg:justify-center items-center p-2">
+          <label for="name"
+            class="text-white font-mono text-lg mr-5 max-sm:my-3 sm:mx-auto max-sm:mx-auto md:mx-auto max-md:mx-auto lg:mx-auto max-lg:mx-auto">
+            je suis Abigaele ton assistante media et tu es ?</label><input
+            class="text-black placeholder:pl-2 h-10 rounded-md lg:mr-5 flex-grow-0 flex-shrink-0  max-sm:my-2 max-sm:w-10/12 max-sm:mx-auto md:w-9/12 max-md:w-9/12 md:mx-auto md:my-2 max-md:mx-auto max-md:my-2 lg:w-52"
+            type="text" name="name" id="name" placeholder="ton nom" required />
+          <input id="butt_1_name" type="button" value="c'est mon nom"
+            class="text-white bg-slate-700 h-10 rounded-md px-5 hover:bg-slate-800 font-mono max-sm:mx-auto" />
         </form>
       </div>
     </div>
-    <div
-      class="sm:w-full md:w-9/12 sm:p-10 p-5 font-mono text-white text-justify hidden"
-    >
+
+
+
+    <div class="sm:w-full md:w-9/12 sm:p-10 p-5 font-mono text-white text-justify">
+      <span id="welcom-txt"></span><br /><br />
       <p id="vids-story" class="">
-        <span id="username"
-          ><span id="welcom-txt"
-            >avant de commencer j'ai a te raconter un peu de l'histoire de la
-            video</span
-          ></span
-        ><br /><br />
-        L'histoire de la vidéo remonte aux années 1950 et 1960, lorsque la
-        technologie de la télévision a commencé à se développer rapidement. La
-        première vidéo enregistrée a été réalisée en 1951 par John Logie Baird,
-        qui avait également été impliqué dans le développement de la
-        télévision.<br /><br />
-        Dans les années 1960, les caméras vidéo grand public sont devenues
-        disponibles et ont permis aux gens d'enregistrer des événements
-        familiaux et des souvenirs personnels. En même temps, les entreprises
-        ont commencé à utiliser la vidéo pour la formation et la communication
-        en interne.<br /><br />
-        Dans les années 1970, la diffusion de la vidéo a commencé à se
-        généraliser avec l'arrivée des magnétoscopes grand public. Les gens
-        pouvaient enregistrer des émissions de télévision et les regarder plus
-        tard, ce qui a révolutionné la façon dont nous consommons la
-        télévision.<br /><br />
-        Dans les années 1980, la technologie de la vidéo a continué à évoluer
-        avec l'arrivée des caméras vidéo légères et portables, ce qui a permis
-        une plus grande liberté de mouvement et a stimulé la création de vidéos
-        d'entreprise, de documentaires et de vidéos musicales. Dans les années
-        1990, l'avènement d'Internet a ouvert de nouvelles possibilités pour la
-        vidéo. <br /><br />Les sites de partage de vidéos en ligne ont commencé
-        à apparaître, permettant aux gens de télécharger et de partager des
-        vidéos avec un public mondial.<br />
-        Au cours des deux dernières décennies, la vidéo est devenue omniprésente
-        dans notre vie quotidienne, grâce à l'amélioration continue de la
-        technologie de la vidéo et à la prolifération des appareils mobiles
-        capables d'enregistrer et de lire des vidéos.<br />
-        Les réseaux sociaux tels que YouTube, TikTok et Instagram ont également
-        transformé la façon dont nous consommons et créons des vidéos,
+
       </p>
     </div>
-    <footer
-      class="w-full border-t-2 mt-24 bg-black border-dotted bottom-0 left-0 flex flex-col justify-between">
+    <div id="start-btn" class="w-2/4 mx-auto p-2 my-10 h-52 bg-amber-400 hidden">
+
+    </div>
+    <footer class="w-full border-t-2 mt-24 bg-black border-dotted bottom-0 left-0 flex flex-col justify-between">
       <div class="sm:w-full max-lg:w-full lg:w-10/12 mx-auto text-center p-5 my-5">
-        <h3 class="w-2/4 mx-auto text-white font-mono"><span class="text-green-900 text-3xl font-mono">T</span >he<span class="text-green-900 text-2xl font-mono">k</span>id</h3>
+        <h3 class="w-2/4 mx-auto text-white font-mono"><span class="text-green-900 text-3xl font-mono">T</span>he<span
+            class="text-green-900 text-2xl font-mono">k</span>id</h3>
       </div>
       <div class="sm:w-full max-lg:w-full lg:w-2/4 p-5 mr-5 self-end bottom-0 text-white text-right">
         <p>tout droit reservees 2023</p>
       </div>
     </footer>
     <script src="./src/js/main.js"></script>
+
   </body>
+
 </html>
