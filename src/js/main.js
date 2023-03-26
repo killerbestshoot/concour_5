@@ -36,9 +36,12 @@ const nameInput = document.getElementById('name');
 
 butt_name.addEventListener('click',()=>{
     const prelude= ", avant de commencer j'ai a te raconter un peu de l'histoire de la video.";
-    const name=document.getElementById('name').value+prelude;
+    let name_user=document.getElementById('name').value;
     const container=document.getElementById('welcom-txt');
+    if(name_user.length>0){
+        const name=name_user+prelude;
     container.innerHTML='';
+  vid_story.innerHTML='';
     let i = 0;
     const speed = 60;
     let pointcounts=0;
@@ -46,12 +49,15 @@ butt_name.addEventListener('click',()=>{
     // Appeler typeWriter à nouveau pour afficher l'histoire de la vidéo
     setTimeout(() => {
         container.innerHTML += "<br /><br />";
+        vid_story.innerHTML='';
         i = 0;
         pointcounts=0;
         typeWriter(story, vid_story, story.length, i, speed,pointcounts);
         console.log(container);
     }, name.length * speed+1500); // attendre que la première animation soit terminée avant de commencer la deuxième
-
+}else{
+    alert("Un nom est necessaire");
+}
 });
 
 function typeWriter(txt, container, leng, i, speed,pointcounts) {
