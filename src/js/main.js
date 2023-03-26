@@ -1,6 +1,7 @@
 // import anime from 'node_modules/animejs/lib/anime.es.js';
 const butt_name = document.getElementById('butt_1_name');
 const vid_story= document.getElementById('vids-story');
+const start_btn=document.getElementById('start-btn');
 var i = 0;
 var speed = 10;
 const story=" L'histoire de la vidéo remonte aux années 1950 et 1960, lorsque la " +
@@ -40,31 +41,34 @@ butt_name.addEventListener('click',()=>{
     const container=document.getElementById('welcom-txt');
     if(name_user.length>0){
         const name=name_user+prelude;
-    container.innerHTML='';
-  vid_story.innerHTML='';
-    let i = 0;
-    const speed = 60;
-    let pointcounts=0;
-    typeWriter(name, container, name.length, i, speed);
-    // Appeler typeWriter à nouveau pour afficher l'histoire de la vidéo
-    setTimeout(() => {
-        container.innerHTML += "<br /><br />";
+        container.innerHTML='';
         vid_story.innerHTML='';
-        i = 0;
-        pointcounts=0;
-        typeWriter(story, vid_story, story.length, i, speed,pointcounts);
-        console.log(container);
-    }, name.length * speed+1500); // attendre que la première animation soit terminée avant de commencer la deuxième
-}else{
-    alert("Un nom est necessaire");
-}
+        let i = 0;
+        const speed = 60;
+        let pointcounts=0;
+        typeWriter(name, container, name.length, i, speed);
+    // Appeler typeWriter à nouveau pour afficher l'histoire de la vidéo
+        setTimeout(() => {
+            container.innerHTML += "<br /><br />";
+            vid_story.innerHTML='';
+            i = 0;
+            pointcounts=0;
+            typeWriter(story, vid_story, story.length, i, speed,pointcounts);
+            console.log(container);
+        }, name.length * speed+1500); // attendre que la première animation soit terminée avant de commencer la deuxième
+        setTimeout(()=>{
+                start_btn.classList.remove('hidden');
+        },story.length*69);// attendre que la deuxime animation soit finit pour lancer l'apparition du bouton
+    }else{
+        alert("Un nom est necessaire");
+    }
 });
 
 function typeWriter(txt, container, leng, i, speed,pointcounts) {
     // itération du texte
     if (i < leng) {
         if (txt.charAt(i) === '.') {
-        pointcounts++;
+            pointcounts++;
             if (pointcounts % 2 === 0) {
                 container.innerHTML += ".<br /><br />";
             } else {
@@ -78,7 +82,5 @@ function typeWriter(txt, container, leng, i, speed,pointcounts) {
             typeWriter(txt, container, leng, i, speed,pointcounts);
         }, speed);
     }
-    // if(i+1==leng && container==='vi')
-   console.log(i+1,container);
-        // typeWriter(story,vid_story,story.length,i,speed)
+    return i+1;
 }
