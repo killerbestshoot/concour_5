@@ -1,4 +1,6 @@
 // import anime from 'node_modules/animejs/lib/anime.es.js';
+document.addEventListener('DOMContentLoaded',()=>{
+
 const butt_name = document.getElementById('butt_1_name');
 const vid_story= document.getElementById('vids-story');
 const start_btn=document.getElementById('start-btn');
@@ -58,7 +60,75 @@ butt_name.addEventListener('click',()=>{
         }, name.length * speed+1500); // attendre que la première animation soit terminée avant de commencer la deuxième
         setTimeout(()=>{
                 start_btn.classList.remove('hidden');
-        },story.length*69);// attendre que la deuxime animation soit finit pour lancer l'apparition du bouton
+            var animation_btn = anime.timeline(
+                {
+                    targets:start_btn,
+                    duration:800,
+                    easing:"easeInOutQuad",
+                }
+            );
+
+            animation_btn.add(
+                {
+                    rotate:90,
+                }
+            );
+
+            animation_btn.add(
+                {
+                    scale: 1.25,
+                    duration: 2000,
+                    easing: "easeInOutQuad",
+                },
+                "+=0"
+            );
+
+            animation_btn.add(
+                {
+                    scale: 1,
+                    duration: 2000,
+                    easing: "easeInOutQuad",
+                },
+                "+=2000"
+            );
+
+            animation_btn.add(
+                {
+                    scale: 1.25,
+                    duration: 2000,
+                    easing: "easeInOutQuad",
+                },
+                "+=2000"
+            );
+
+            animation_btn.add(
+                {
+                    scale: 1,
+                    duration: 2000,
+                    easing: "easeInOutQuad",
+                },
+                "+=2000"
+            );
+
+           // animation_btn.play();
+
+            var animation_btn = anime({
+                targets: start_btn,
+                rotate: 90,
+                duration: 800,
+                easing: "easeInOutQuad",
+                loop: true, // active la répétition de l'animation
+                direction: "alternate", // alterne la direction de l'animation à chaque répétition
+                delay: 2000, // délai avant la première répétition de l'animation
+                autoplay: true, // active l'animation dès sa création
+                scale: [{ value: 1.25, duration: 500, easing: 'easeOutQuad' }, // animation "scale"
+                    { value: 1, duration: 500, easing: 'easeOutQuad' }], // animation inverse de "scale"
+                opacity: [{ value: 1, duration: 0 }, // démarre avec une opacité de 1
+                    { value: 0.5, duration: 500, easing: 'easeOutQuad' }, // animation d'opacité
+                    { value: 1, duration: 500, easing: 'easeOutQuad' }], // animation inverse d'opacité
+            });
+
+        },story.length*71);// attendre que la deuxime animation soit finit pour lancer l'apparition du bouton
     }else{
         alert("Un nom est necessaire");
     }
@@ -84,3 +154,4 @@ function typeWriter(txt, container, leng, i, speed,pointcounts) {
     }
     return i+1;
 }
+});
