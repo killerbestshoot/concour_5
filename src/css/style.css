@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+}
+@layer components {
+    .listp {
+        @apply text-sm text-teal-500  hover:text-gray-200;
+    }
+    .listprop {
+        @apply leading-tight text-sm text-teal-500 border-b-2 border-y-green-600 hover:text-gray-100 p-2 hover:border-y-slate-100 lg:w-2/6;
+    }
+    .dev {
+        @apply w-full flex flex-col  justify-between items-center text-center lg:w-3/5 lg:h-2/4 lg:p-0  lg:border-green-700 lg:flex lg:flex-row lg:justify-center lg:rounded-xl lg:absolute hover:z-20 lg:hover:-translate-y-2 lg:hover:shadow-xl lg:hover:shadow-white;
+    }
+    .title {
+        @apply font-bold tracking-wider text-lg p-5 mx-auto text-center w-3/4 lg:w-full lg:mb-10 text-white;
+    }
+    .img {
+        @apply w-full h-2/4 overflow-hidden bg-contain lg:w-2/4 lg:h-full lg:bg-contain lg:rounded-l-xl md:flex-grow-0 sm:flex-grow-0 lg:grow-0 shrink-0;
+    }
+    .containner {
+        @apply block lg:w-3/5 lg:h-full p-10;
+    }
+    .hoverdiv {
+        @apply hover:md:shadow-xl hover:md:shadow-slate-700 hover:md:-translate-y-2 hover:scale-125;
+    }
+}

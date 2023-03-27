@@ -4,8 +4,12 @@ document.addEventListener('DOMContentLoaded',()=>{
 const butt_name = document.getElementById('butt_1_name');
 const vid_story= document.getElementById('vids-story');
 const start_btn=document.getElementById('start-btn');
-var i = 0;
-var speed = 10;
+const prelude= ", avant de commencer j'ai a te raconter un peu de l'histoire de la video.";
+const container=document.getElementById('welcom-txt');
+let userName;
+let i = 0;
+let pointcounts=0;
+const speed = 60;
 const story=" L'histoire de la vidéo remonte aux années 1950 et 1960, lorsque la " +
     "        technologie de la télévision a commencé à se développer rapidement. La " +
     "        première vidéo enregistrée a été réalisée en 1951 par John Logie Baird, " +
@@ -35,19 +39,15 @@ const story=" L'histoire de la vidéo remonte aux années 1950 et 1960, lorsque 
     "        capables d'enregistrer et de lire des vidéos." +
     "        Les réseaux sociaux tels que YouTube, TikTok et Instagram ont également" +
     "        transformé la façon dont nous consommons et créons des vidéos,";
-const nameInput = document.getElementById('name');
+// const nameInput = document.getElementById('name');
 
 butt_name.addEventListener('click',()=>{
-    const prelude= ", avant de commencer j'ai a te raconter un peu de l'histoire de la video.";
     let name_user=document.getElementById('name').value;
-    const container=document.getElementById('welcom-txt');
+    userName=name_user;
     if(name_user.length>0){
         const name=name_user+prelude;
         container.innerHTML='';
         vid_story.innerHTML='';
-        let i = 0;
-        const speed = 60;
-        let pointcounts=0;
         typeWriter(name, container, name.length, i, speed);
     // Appeler typeWriter à nouveau pour afficher l'histoire de la vidéo
         setTimeout(() => {
@@ -60,58 +60,6 @@ butt_name.addEventListener('click',()=>{
         }, name.length * speed+1500); // attendre que la première animation soit terminée avant de commencer la deuxième
         setTimeout(()=>{
                 start_btn.classList.remove('hidden');
-            var animation_btn = anime.timeline(
-                {
-                    targets:start_btn,
-                    duration:800,
-                    easing:"easeInOutQuad",
-                }
-            );
-
-            animation_btn.add(
-                {
-                    rotate:90,
-                }
-            );
-
-            animation_btn.add(
-                {
-                    scale: 1.25,
-                    duration: 2000,
-                    easing: "easeInOutQuad",
-                },
-                "+=0"
-            );
-
-            animation_btn.add(
-                {
-                    scale: 1,
-                    duration: 2000,
-                    easing: "easeInOutQuad",
-                },
-                "+=2000"
-            );
-
-            animation_btn.add(
-                {
-                    scale: 1.25,
-                    duration: 2000,
-                    easing: "easeInOutQuad",
-                },
-                "+=2000"
-            );
-
-            animation_btn.add(
-                {
-                    scale: 1,
-                    duration: 2000,
-                    easing: "easeInOutQuad",
-                },
-                "+=2000"
-            );
-
-           // animation_btn.play();
-
             var animation_btn = anime({
                 targets: start_btn,
                 rotate: 90,
@@ -154,4 +102,17 @@ function typeWriter(txt, container, leng, i, speed,pointcounts) {
     }
     return i+1;
 }
+start_btn.addEventListener('click',()=>{
+    // Transmettre la valeur au deuxième script
+    // (ici, nous utilisons l'API Fetch pour envoyer une requête GET au deuxième script)
+    fetch("src/js/home.js?user_name=" + encodeURIComponent(userName))
+        .then(function(response) {
+            // console.log("Réponse du deuxième script :", response);
+            window.location.href='src/public/home.html?user_name='+encodeURIComponent(userName);
+        })
+        .catch(function(error) {
+            console.error("Erreur lors de l'envoi de la requête :", error);
+        });
+
+});
 });

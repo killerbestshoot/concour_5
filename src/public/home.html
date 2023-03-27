@@ -4,27 +4,95 @@
     <meta charset="UTF-8">
     <title>I Watch</title>
     <link rel="stylesheet" href="../../dist/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/animejs"></script>
+    <script src="../../node_modules/animejs/lib/anime.min.js"></script>
 </head>
-<body class="sm:w-full h-full flex  justify-center">
-<header class="w-full h-24 flex justify-between items-center bg-slate-900 flex-grow p-5">
+<body class="sm:w-full  flex flex-col justify-center bg-slate-600 ">
+<header class="w-full h-24 flex justify-between items-center bg-slate-900 top-0 z-30 fixed p-5">
     <div class="w-1/5 ml-10">
-        <h1 class="text-white font-mono text-3xl" ><span class="text-green-900 text-xl">I</span>Watch</h1>
+        <a href="#" class="text-white font-mono text-3xl" ><span class="text-green-500 text-xl">I</span>Watch</a>
     </div>
-    <nav class="w-3/6">
-        <ol class="w-full flex justify-center float-right text-white mr-14 border-2 border-black">
-            <li>bbsbd</li>
-            <li>kjjdsds</li>
-            <li>skdjskjd</li>
-            <li id="username-loged">Bastien</li>
+    <nav class="w-3/12 p-2 mr-5">
+        <ol class="w-full flex justify-around float-right text-white mr-2 p-2 text-white">
+            <li class="p-1 border-b-2 hover:border-b-green-500">
+                <a  href="#">
+                About
+                </a>
+            </li>
+            <li class="p-1 ml-1 border-b-2 hover:border-b-green-500">
+                <a href="#">
+                Contactez nous
+                </a>
+            </li>
+            <li class="p-1 ml-1 border-b-2 hover:border-b-green-500" id="username-loged">
+            <a href="#">
+                Bastien
+            </a>
+            </li>
         </ol>
     </nav>
-
 </header>
-<main>
+<main class="flex-grow mt-24">
+    <section id="tools-search" class="w-full p-2 flex justify-between items-center flex-grow">
+        <div id="pop_up_btn" class="border-2 border-green-200 w-16 h-16 float-left ml-10 mt-10 bg-gray-500 z-10 rounded-md shadow-2xl shadow-black hover:scale-90 hover:shadow-none"></div>
+        <div id="search_box" class="w-5/12 flex justify-center mr-10 p-3">
+            <form class="w-4/5 mx-auto flex justify-center items-center">
+                <input type="text" name="q_string" placeholder="rechercher"  id="q_string" required class=" rounded-l-full h-10 p-2 outline-0 font-mono">
+                <input type="button" name="set_q_string" value="v" id="set_q_String" class="w-10 bg-gray-500 h-10 p-2 font-mono text-white hover:bg-gray-600 outline-0">
+                <input type="button" name="validator" value="rechercher" id="validate" class="w-3/5 h-10 p-2 bg-slate-900 text-white outline-0 hover:bg-slate-700 text-white font-mono rounded-r-full">
+            </form>
+        </div>
+    </section>
+    <section id="tools" class="w-10/12 mx-auto rounded-md bg-green-200 flex justify-center p-3 mt-1 mb-16 z-20 shadow-2xl shadow-black hidden">
+        <div class="w-1/5 h-96 p-1 border-r-4 border-gray-600">
+            <ol class="w-full p-1 flex flex-col justify-center font-mono font-bold">
+                <li class="w-full h-1/3 p-3 text-left border-b-2 border-b-green-500 hover:border-r-4 hover:border-b-transparent hover:border-r-green-500 hover:bg-slate-500">
+                    historiques
+                </li>
+                <li class="w-full h-1/3 mt-8 p-3 text-left border-b-2 border-b-green-500 hover:border-r-4 hover:border-b-transparent hover:border-r-green-500 hover:bg-slate-500">
+                    statistique
+                </li>
+                <li class="w-full h-1/3 mt-8 p-3 text-left border-b-2 border-b-green-500 hover:border-r-4 hover:border-b-transparent hover:border-r-green-500 hover:bg-slate-500">
+                    like
+                </li>
+                <li class="w-full h-1/3 mt-8 p-3 text-left border-b-2 border-b-green-500 hover:border-r-4 hover:border-b-transparent hover:border-r-green-500 hover:bg-slate-500">
+                    unlike
+                </li>
+            </ol>
+        </div>
+        <div class="flex-grow">
+
+        </div>
+        <div id="close_btn" class="w-8 h-8 p-2 flex flex-col justify-center z-10 items-center bg-gray-500 border-2 border-white rounded-md shadow-2xl shadow-gray-900 hover:scale-90 hover:shadow-none">
+            <div class="w-full border-b-2 border-b-black rotate-45"></div>
+            <div class="w-full border-b-2 border-b-black z-20 -rotate-45"></div>
+        </div>
+    </section>
+    <section class="w-11/12 lg:max-w-13*100 mx-auto p-3 mt-10 bg-transparent grid grid-cols-autoGrid gap-3 justify-center">
+        <div class="w-3*100 h-3*100 bg-blue-800 rounded-md border border-white p-0 flex flex-col justify-center hoverdiv"></div>
+        <div class="w-3*100 h-3*100 bg-blue-800"></div>
+        <div class="w-3*100 h-3*100 bg-blue-800"></div>
+        <div class="w-3*100 h-3*100 bg-blue-800"></div>
+        <div class="w-3*100 h-3*100 bg-blue-800"></div>
+        <div class="w-3*100 h-3*100 bg-blue-800"></div>
+        <div class="w-3*100 h-3*100 bg-blue-800"></div>
+        <div class="w-3*100 h-3*100 bg-blue-800"></div>
+        <div class="w-3*100 h-3*100 bg-blue-800"></div>
+        <div class="w-3*100 h-3*100 bg-blue-800"></div>
+
+
+    </section>
 
 </main>
-<footer>
-
+<footer class="w-full border-t-2 mt-24 bg-black border-dotted bottom-0 left-0 flex flex-col justify-between">
+    <div class="sm:w-full max-lg:w-full lg:w-10/12 mx-auto text-center p-5 my-5">
+        <h3 class="w-2/4 mx-auto text-white font-mono"><span class="text-green-900 text-3xl font-mono">T</span>he<span
+                class="text-green-900 text-2xl font-mono">k</span>id</h3>
+    </div>
+    <div class="sm:w-full max-lg:w-full lg:w-2/4 p-5 mr-5 self-end bottom-0 text-white text-right">
+        <p> © Tous droits réservés - 2023</p>
+    </div>
 </footer>
+<script src="../js/home.js"></script>
 </body>
 </html>
