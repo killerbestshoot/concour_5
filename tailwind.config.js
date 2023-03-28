@@ -20,6 +20,19 @@ module.exports = {
         // Complex site-specific column configuration
         footer: "200px minmax(900px, 1fr) 100px",
       },
+      backdropBlur: {
+        'none': '0',
+        'xs': '5px',
+        'sm': '10px',
+        'md': '15px',
+        'lg': '20px',
+        'xl': '25px',
+        '2xl': '30px',
+        '3xl': '35px',
+        '4xl': '40px',
+        '5xl': '45px',
+        '6xl': '50px',
+      },
       maxWidth: {
         "1/2": "50%",
         "13*100": "1350px",
@@ -32,5 +45,11 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  variants: {
+    backdropBlur: ['responsive'],
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+  ],
 };
