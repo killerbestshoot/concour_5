@@ -36,9 +36,12 @@ module.exports = {
       maxWidth: {
         "1/2": "50%",
         "13*100": "1350px",
+        "50ppx":"100px",
+        "20ppx":"350px",
       },
       width: {
         "3*100": "280px",
+
       },
       height: {
         "3*100": "280px",
@@ -49,7 +52,7 @@ module.exports = {
     backdropBlur: ['responsive'],
   },
   plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
+    // require('@tailwindcss/forms'),
+    // require('@tailwindcss/typography'),
   ],
 };
