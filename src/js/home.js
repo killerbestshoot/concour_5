@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error(error));
     }
     function toggle_span(){
+
         document.getElementById('span1').classList.toggle('rotate-45')
         document.getElementById('span1').classList.toggle('z-30')
         document.getElementById('span2').classList.toggle('hidden')
@@ -78,8 +79,32 @@ document.addEventListener('DOMContentLoaded', () => {
         load_video_from_youtube_data_api();
     });
     openMenuToggler.addEventListener('click', () => {
-        toggle_span();
        sliderMenu.classList.toggle('-translate-x-full');
+        // if (sliderMenu.classList.contains('-translate-x-full')) {
+        //     anime({
+        //         targets: sliderMenu,
+        //         translateX: ['-100%', 0],
+        //         easing: 'easeOutExpo',
+        //         duration: 500
+        //     });
+        // } else {
+        //     anime({
+        //         targets: sliderMenu,
+        //         translateX: [0, '-100%'],
+        //         easing: 'easeOutExpo',
+        //         duration: 500,
+        //
+        //     });
+        // }
+
+
+        // anime({
+        //     targets: sliderMenu,
+        //     translateX: sliderMenu.classList.contains('-translate-x-full') ? ['-100%', 0] : [0, '-100%'],
+        //     easing: 'easeOutExpo',
+        //     duration: 500
+        // });
+
         if (sliderMenu.classList.contains('-translate-x-full')) {
             anime({
                 targets: sliderMenu,
@@ -88,16 +113,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 duration: 500
             });
         } else {
-            anime({
-                targets: sliderMenu,
-                translateX: [0, '-100%'],
-                easing: 'easeOutExpo',
-                duration: 500,
-                // complete: () => {
-                //     sliderMenu.style.transform = '';
-                // }
-            });
+            setTimeout(() => {
+                anime({
+                    targets: sliderMenu,
+                    translateX: [0, '-100%'],
+                    easing: 'easeOutExpo',
+                    duration: 500
+                });
+            }, 50);
         }
+
     });
 
 });
