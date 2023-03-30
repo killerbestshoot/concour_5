@@ -37,8 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     iframe.allowFullscreen = true;
 
                     const div = document.createElement('div');//creation du div qui aura la video et ses infos
-                    const div2 = document.createElement('div');//creation du div qui recevra l'iframe
-                    const div3 = document.createElement('div');//creation du div qui contiendra les infos
+                    const div2 =div//creation du div qui recevra l'iframe
+                    const div3 = div//creation du div qui contiendra les infos
                     // les proprietes tailwind qu'aura les divs
                     div2.setAttribute('class', 'w-full h-4/6 bg-slate-400 rounded-t-md');
                     div3.setAttribute('class', 'w-full h-2/6 bg-slate-600 rounded-b-md');
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 50);
         }
     }
-    load_video_from_youtube_data_api('bande d annonce vf');
+    // load_video_from_youtube_data_api('bande d annonce vf');
     pop_up.addEventListener('click', () => {
         document.getElementById('search_box').classList.add('mx-auto');
         for_toggle();
