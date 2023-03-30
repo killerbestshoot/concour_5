@@ -10,16 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const openMenuToggler = document.getElementById('open-menue-toggler');
     user_conn.href = './user?name=' + encodeURIComponent(value);
     user_conn.innerText += value;
-    load_video_from_youtube_data_api('bande d annonce vf');
-    // console.log("La valeur transmise est :", value);
-    pop_up.addEventListener('click', () => {
-        document.getElementById('search_box').classList.add('mx-auto');
-        for_toggle();
-    });
-    document.getElementById('close_btn').addEventListener('click', () => {
-        for_toggle();
-    })
 
+    // console.log("La valeur transmise est :", value);
     function for_toggle() {
         pop_up.classList.toggle('max-lg:block')
         pop_up.classList.toggle('lg:block')
@@ -61,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function toggle_span() {
-
         document.getElementById('span1').classList.toggle('rotate-45')
         document.getElementById('span1').classList.toggle('z-30')
         document.getElementById('span2').classList.toggle('hidden')
@@ -93,14 +84,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 50);
         }
     }
-
-
+    load_video_from_youtube_data_api('bande d annonce vf');
+    pop_up.addEventListener('click', () => {
+        document.getElementById('search_box').classList.add('mx-auto');
+        for_toggle();
+    });
+    document.getElementById('close_btn').addEventListener('click', () => {
+        for_toggle();
+    })
     document.getElementById('validate').addEventListener('click', () => {
         const searchQuery = document.getElementById('q_string').value;
         load_video_from_youtube_data_api(searchQuery);
     });
     openMenuToggler.addEventListener('click', () => {
-        toggle_span()
+        toggle_span();
     });
 
 });
