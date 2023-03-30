@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // load_video_from_youtube_data_api();
     const pop_up = document.getElementById('pop_up_btn')
     const bdy = document.querySelector('body');
     const user_conn = document.getElementById('connected-user');
@@ -11,9 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const openMenuToggler = document.getElementById('open-menue-toggler');
     user_conn.href = './user?name=' + encodeURIComponent(value);
     user_conn.innerText += value;
+    load_video_from_youtube_data_api('bande d annonce vf');
     // console.log("La valeur transmise est :", value);
     pop_up.addEventListener('click', () => {
-        bdy.classList.remove('h-screen');
         document.getElementById('search_box').classList.add('mx-auto');
         for_toggle();
     });
@@ -22,13 +21,17 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     function for_toggle() {
+        pop_up.classList.toggle('max-lg:block')
+        pop_up.classList.toggle('lg:block')
         pop_up.classList.toggle('hidden')
         document.getElementById('tools').classList.toggle('hidden');
         document.getElementById('list_vids').classList.toggle('hidden');
     }
 
-    function load_video_from_youtube_data_api() {
-        fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${searchQuery}&type=video&key=${API_KEY}`)
+    function load_video_from_youtube_data_api(searchQuery) {
+        // Supprimer tous les éléments enfants du conteneur
+        videoContainer.innerHTML = '';
+        fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=24&q=${searchQuery}&type=video&key=${API_KEY}`)
             .then(response => response.json())
             .then(data => {
                 // Boucle à travers les vidéos renvoyées par l'API et crée un élément <div> pour chacune.
@@ -56,73 +59,48 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => console.error(error));
     }
-    function toggle_span(){
+
+    function toggle_span() {
 
         document.getElementById('span1').classList.toggle('rotate-45')
         document.getElementById('span1').classList.toggle('z-30')
         document.getElementById('span2').classList.toggle('hidden')
         document.getElementById('span3').classList.toggle('-rotate-45')
+        setTimeout(() => {
+            anime_slider();
+        }, 50);
     }
 
-    var anime_slider = anime({
-        targets: 'slider-menu',
-        left: 0,
-        duration: 1000,
-        easing: 'easeInOutQuad',
-        // complete:()=>{
-        //
-        // },
-    });
-
-    document.getElementById('validate').addEventListener('click', () => {
-        const searchQuery = document.getElementById('q_string').value;
-        load_video_from_youtube_data_api();
-    });
-    openMenuToggler.addEventListener('click', () => {
-       sliderMenu.classList.toggle('-translate-x-full');
-        // if (sliderMenu.classList.contains('-translate-x-full')) {
-        //     anime({
-        //         targets: sliderMenu,
-        //         translateX: ['-100%', 0],
-        //         easing: 'easeOutExpo',
-        //         duration: 500
-        //     });
-        // } else {
-        //     anime({
-        //         targets: sliderMenu,
-        //         translateX: [0, '-100%'],
-        //         easing: 'easeOutExpo',
-        //         duration: 500,
-        //
-        //     });
-        // }
-
-
-        // anime({
-        //     targets: sliderMenu,
-        //     translateX: sliderMenu.classList.contains('-translate-x-full') ? ['-100%', 0] : [0, '-100%'],
-        //     easing: 'easeOutExpo',
-        //     duration: 500
-        // });
-
+    function anime_slider() {
+        // sliderMenu.classList.toggle('-translate-x-full');
         if (sliderMenu.classList.contains('-translate-x-full')) {
+            sliderMenu.classList.toggle('-translate-x-full');
             anime({
                 targets: sliderMenu,
                 translateX: ['-100%', 0],
                 easing: 'easeOutExpo',
-                duration: 500
+                duration: 400
             });
         } else {
             setTimeout(() => {
+                sliderMenu.classList.toggle('-translate-x-full');
                 anime({
                     targets: sliderMenu,
                     translateX: [0, '-100%'],
                     easing: 'easeOutExpo',
-                    duration: 500
+                    duration: 400
                 });
             }, 50);
         }
+    }
 
+
+    document.getElementById('validate').addEventListener('click', () => {
+        const searchQuery = document.getElementById('q_string').value;
+        load_video_from_youtube_data_api(searchQuery);
+    });
+    openMenuToggler.addEventListener('click', () => {
+        toggle_span()
     });
 
 });
