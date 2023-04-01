@@ -7,10 +7,14 @@ module.exports = {
         DEFAULT: '1px',
         '0': '0',
         '2': '2px',
-        '3': '3px',
-        '4': '4px',
+        '2.5px':'4px',
+        '3': '15px',
+        '4': '20px',
         '6': '25px',
+        '7':'30px',
         '8': '35px',
+        '9':'40px',
+        '10':'45px',
       },
       gridTemplateColumns: {
         // Simple 16 column grid
